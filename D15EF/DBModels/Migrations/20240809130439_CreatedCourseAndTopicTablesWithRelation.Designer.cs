@@ -4,6 +4,7 @@ using DBModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DBModels.Migrations
 {
     [DbContext(typeof(DEPIContext))]
-    partial class DEPIContextModelSnapshot : ModelSnapshot
+    [Migration("20240809130439_CreatedCourseAndTopicTablesWithRelation")]
+    partial class CreatedCourseAndTopicTablesWithRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,25 +83,6 @@ namespace DBModels.Migrations
                     b.ToTable("Departments");
                 });
 
-            modelBuilder.Entity("DBModels.InstCourse", b =>
-                {
-                    b.Property<int>("Ins_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Crs_Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Evaluation")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Ins_Id", "Crs_Id");
-
-                    b.HasIndex("Crs_Id");
-
-                    b.ToTable("InstCourses");
-                });
-
             modelBuilder.Entity("DBModels.Instructor", b =>
                 {
                     b.Property<int>("Ins_Id")
@@ -126,24 +110,6 @@ namespace DBModels.Migrations
                     b.HasIndex("Dept_Id");
 
                     b.ToTable("Instructors");
-                });
-
-            modelBuilder.Entity("DBModels.StudCourse", b =>
-                {
-                    b.Property<int>("Stud_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Crs_Id")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Grade")
-                        .HasColumnType("int");
-
-                    b.HasKey("Stud_Id", "Crs_Id");
-
-                    b.HasIndex("Crs_Id");
-
-                    b.ToTable("StudCourses");
                 });
 
             modelBuilder.Entity("DBModels.Student", b =>
@@ -219,25 +185,6 @@ namespace DBModels.Migrations
                     b.Navigation("Manager");
                 });
 
-            modelBuilder.Entity("DBModels.InstCourse", b =>
-                {
-                    b.HasOne("DBModels.Course", "Crs")
-                        .WithMany("CrsInstructors")
-                        .HasForeignKey("Crs_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DBModels.Instructor", "Inst")
-                        .WithMany("InstCourses")
-                        .HasForeignKey("Ins_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Crs");
-
-                    b.Navigation("Inst");
-                });
-
             modelBuilder.Entity("DBModels.Instructor", b =>
                 {
                     b.HasOne("DBModels.Department", "InsDept")
@@ -245,25 +192,6 @@ namespace DBModels.Migrations
                         .HasForeignKey("Dept_Id");
 
                     b.Navigation("InsDept");
-                });
-
-            modelBuilder.Entity("DBModels.StudCourse", b =>
-                {
-                    b.HasOne("DBModels.Course", "Crs")
-                        .WithMany("CrsStudents")
-                        .HasForeignKey("Crs_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DBModels.Student", "Stud")
-                        .WithMany("StudentCourses")
-                        .HasForeignKey("Stud_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Crs");
-
-                    b.Navigation("Stud");
                 });
 
             modelBuilder.Entity("DBModels.Student", b =>
@@ -281,13 +209,6 @@ namespace DBModels.Migrations
                     b.Navigation("SuperVisor");
                 });
 
-            modelBuilder.Entity("DBModels.Course", b =>
-                {
-                    b.Navigation("CrsInstructors");
-
-                    b.Navigation("CrsStudents");
-                });
-
             modelBuilder.Entity("DBModels.Department", b =>
                 {
                     b.Navigation("DeptInstructors");
@@ -297,15 +218,11 @@ namespace DBModels.Migrations
 
             modelBuilder.Entity("DBModels.Instructor", b =>
                 {
-                    b.Navigation("InstCourses");
-
                     b.Navigation("ManagedDepts");
                 });
 
             modelBuilder.Entity("DBModels.Student", b =>
                 {
-                    b.Navigation("StudentCourses");
-
                     b.Navigation("SuperVisedSts");
                 });
 

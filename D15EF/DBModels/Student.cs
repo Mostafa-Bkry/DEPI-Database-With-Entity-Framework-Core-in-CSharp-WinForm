@@ -28,5 +28,7 @@ namespace DBModels
         public Student? SuperVisor { get; set; }
 
         public ICollection<Student> SuperVisedSts { get; set; }
+
+        public ICollection<StudCourse>? StudentCourses { get; set; }
     }
 }

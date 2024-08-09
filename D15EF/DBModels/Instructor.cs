@@ -19,7 +19,10 @@ namespace DBModels
 
         [ForeignKey("InsDept")]
         public int? Dept_Id { get; set; }
-
         public Department? InsDept { get; set; }
+
+        public ICollection<Department>? ManagedDepts { get; set; }
+
+        public ICollection<InstCourse>? InstCourses { get; set; }
     }
 }
