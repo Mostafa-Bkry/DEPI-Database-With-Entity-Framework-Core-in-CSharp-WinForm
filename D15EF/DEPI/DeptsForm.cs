@@ -179,19 +179,6 @@ namespace DEPI
                 { d.Dept_Id, d.Dept_Name, i.Ins_Id, i.Ins_Name })
                 .ToList();
         }
-
-        private void ShowStCrsButton_Click(object sender, EventArgs e)
-        {
-            //var stCrs = departments.Join(st.StudCourses, s => s.St_Id, sc => sc.Stud_Id,
-            //    (s, sc) => new { s.St_Id, s.Fname, sc.Crs_Id }).ToList();
-            //var crs = stCrs.Join(st.Courses, stc => stc.Crs_Id, c => c.Crs_Id,
-            //    (stc, c) => new { stc.St_Id, stc.Fname, stc.Crs_Id, c.Crs_Name });
-
-            //var r = crs.ToList();
-
-            //StdGView.DataSource = r;
-        }
-
         #endregion
 
         #region TextBoxes Logic
