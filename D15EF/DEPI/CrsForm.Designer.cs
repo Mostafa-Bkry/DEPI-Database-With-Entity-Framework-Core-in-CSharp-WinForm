@@ -53,7 +53,7 @@
             BackButton.BackColor = Color.FloralWhite;
             BackButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             BackButton.ForeColor = Color.Indigo;
-            BackButton.Location = new Point(12, 12);
+            BackButton.Location = new Point(0, 0);
             BackButton.Name = "BackButton";
             BackButton.Size = new Size(63, 33);
             BackButton.TabIndex = 1;
