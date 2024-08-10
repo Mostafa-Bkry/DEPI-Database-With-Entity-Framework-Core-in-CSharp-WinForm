@@ -180,7 +180,7 @@
             Controls.Add(BackButton);
             Name = "TopicsForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "TopicsForm";
+            Text = "Topics";
             ((System.ComponentModel.ISupportInitialize)StdGView).EndInit();
             ResumeLayout(false);
             PerformLayout();

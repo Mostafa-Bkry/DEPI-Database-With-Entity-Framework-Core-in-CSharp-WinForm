@@ -223,7 +223,7 @@
             DistButton.Name = "DistButton";
             DistButton.Size = new Size(87, 33);
             DistButton.TabIndex = 34;
-            DistButton.Text = "Distinct Stud";
+            DistButton.Text = "Distinct Inst";
             DistButton.UseVisualStyleBackColor = true;
             DistButton.Click += DistButton_Click;
             // 
@@ -234,7 +234,7 @@
             LstButton.Name = "LstButton";
             LstButton.Size = new Size(87, 33);
             LstButton.TabIndex = 39;
-            LstButton.Text = "Last Student";
+            LstButton.Text = "Last Inst";
             LstButton.UseVisualStyleBackColor = true;
             LstButton.Click += LstButton_Click;
             // 
@@ -245,7 +245,7 @@
             FstButton.Name = "FstButton";
             FstButton.Size = new Size(87, 33);
             FstButton.TabIndex = 33;
-            FstButton.Text = "First Student";
+            FstButton.Text = "First Inst";
             FstButton.UseVisualStyleBackColor = true;
             FstButton.Click += FstButton_Click;
             // 
@@ -278,7 +278,7 @@
             Controls.Add(BackButton);
             Name = "InstsForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "InstsForm";
+            Text = "Instructors";
             ((System.ComponentModel.ISupportInitialize)StdGView).EndInit();
             ResumeLayout(false);
             PerformLayout();

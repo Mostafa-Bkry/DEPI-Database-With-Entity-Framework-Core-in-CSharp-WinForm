@@ -254,7 +254,7 @@
             Controls.Add(BackButton);
             Name = "CrsForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "CrsForm";
+            Text = "Courses";
             ((System.ComponentModel.ISupportInitialize)StdGView).EndInit();
             ResumeLayout(false);
             PerformLayout();
