@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirstPageForm));
             CrsButton = new Button();
             DeptButton = new Button();
             InstButton = new Button();
@@ -35,7 +36,6 @@
             TopButton = new Button();
             InstCrsButton = new Button();
             StCrsButton = new Button();
-            flowLayoutPanel1 = new FlowLayoutPanel();
             SuspendLayout();
             // 
             // CrsButton
@@ -129,15 +129,6 @@
             StCrsButton.UseVisualStyleBackColor = false;
             StCrsButton.Click += StCrsButton_Click;
             // 
-            // flowLayoutPanel1
-            // 
-            flowLayoutPanel1.BackgroundImage = Properties.Resources.DEPI;
-            flowLayoutPanel1.BackgroundImageLayout = ImageLayout.Stretch;
-            flowLayoutPanel1.Location = new Point(3, 4);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(38, 36);
-            flowLayoutPanel1.TabIndex = 8;
-            // 
             // FirstPageForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -145,7 +136,6 @@
             BackgroundImage = Properties.Resources.BackG2;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
-            Controls.Add(flowLayoutPanel1);
             Controls.Add(StCrsButton);
             Controls.Add(InstCrsButton);
             Controls.Add(TopButton);
@@ -153,6 +143,7 @@
             Controls.Add(StButton);
             Controls.Add(CrsButton);
             Controls.Add(DeptButton);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FirstPageForm";
             StartPosition = FormStartPosition.CenterScreen;
@@ -169,6 +160,5 @@
         private Button TopButton;
         private Button InstCrsButton;
         private Button StCrsButton;
-        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TopicsForm));
             BackButton = new Button();
             StdGView = new DataGridView();
             label2 = new Label();
@@ -178,6 +179,7 @@
             Controls.Add(FstButton);
             Controls.Add(StdGView);
             Controls.Add(BackButton);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "TopicsForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Topics";

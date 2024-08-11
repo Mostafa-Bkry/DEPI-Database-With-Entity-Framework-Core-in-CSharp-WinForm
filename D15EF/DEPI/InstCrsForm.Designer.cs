@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InstCrsForm));
             BackButton = new Button();
             StdGView = new DataGridView();
             label2 = new Label();
@@ -202,6 +203,7 @@
             Controls.Add(FstButton);
             Controls.Add(StdGView);
             Controls.Add(BackButton);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "InstCrsForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Instructor Courses";

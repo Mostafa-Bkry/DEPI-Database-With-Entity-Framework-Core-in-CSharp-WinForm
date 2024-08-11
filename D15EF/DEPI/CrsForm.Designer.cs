@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrsForm));
             BackButton = new Button();
             StdGView = new DataGridView();
             label5 = new Label();
@@ -65,7 +66,7 @@
             // 
             StdGView.BackgroundColor = SystemColors.ControlLight;
             StdGView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            StdGView.Location = new Point(33, 287);
+            StdGView.Location = new Point(36, 246);
             StdGView.Name = "StdGView";
             StdGView.Size = new Size(732, 240);
             StdGView.TabIndex = 2;
@@ -153,7 +154,7 @@
             // ShowStudButton
             // 
             ShowStudButton.Font = new Font("Segoe UI", 10F);
-            ShowStudButton.Location = new Point(475, 190);
+            ShowStudButton.Location = new Point(478, 149);
             ShowStudButton.Name = "ShowStudButton";
             ShowStudButton.Size = new Size(198, 30);
             ShowStudButton.TabIndex = 57;
@@ -164,7 +165,7 @@
             // ShowInstsButton
             // 
             ShowInstsButton.Font = new Font("Segoe UI", 10F);
-            ShowInstsButton.Location = new Point(248, 190);
+            ShowInstsButton.Location = new Point(251, 149);
             ShowInstsButton.Name = "ShowInstsButton";
             ShowInstsButton.Size = new Size(198, 30);
             ShowInstsButton.TabIndex = 56;
@@ -175,7 +176,7 @@
             // ShowTopicButton
             // 
             ShowTopicButton.Font = new Font("Segoe UI", 10F);
-            ShowTopicButton.Location = new Point(33, 190);
+            ShowTopicButton.Location = new Point(36, 149);
             ShowTopicButton.Name = "ShowTopicButton";
             ShowTopicButton.Size = new Size(185, 30);
             ShowTopicButton.TabIndex = 55;
@@ -186,7 +187,7 @@
             // RestButton
             // 
             RestButton.Font = new Font("Segoe UI", 9F);
-            RestButton.Location = new Point(678, 236);
+            RestButton.Location = new Point(681, 195);
             RestButton.Name = "RestButton";
             RestButton.Size = new Size(87, 33);
             RestButton.TabIndex = 54;
@@ -197,7 +198,7 @@
             // DistButton
             // 
             DistButton.Font = new Font("Segoe UI", 9F);
-            DistButton.Location = new Point(260, 236);
+            DistButton.Location = new Point(263, 195);
             DistButton.Name = "DistButton";
             DistButton.Size = new Size(87, 33);
             DistButton.TabIndex = 53;
@@ -208,7 +209,7 @@
             // LstButton
             // 
             LstButton.Font = new Font("Segoe UI", 9F);
-            LstButton.Location = new Point(147, 236);
+            LstButton.Location = new Point(150, 195);
             LstButton.Name = "LstButton";
             LstButton.Size = new Size(87, 33);
             LstButton.TabIndex = 58;
@@ -219,7 +220,7 @@
             // FstButton
             // 
             FstButton.Font = new Font("Segoe UI", 9F);
-            FstButton.Location = new Point(33, 236);
+            FstButton.Location = new Point(36, 195);
             FstButton.Name = "FstButton";
             FstButton.Size = new Size(87, 33);
             FstButton.TabIndex = 52;
@@ -233,7 +234,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.BackG2;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(800, 530);
+            ClientSize = new Size(800, 491);
             ControlBox = false;
             Controls.Add(label5);
             Controls.Add(TopicTBox);
@@ -252,6 +253,7 @@
             Controls.Add(FstButton);
             Controls.Add(StdGView);
             Controls.Add(BackButton);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CrsForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Courses";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StsForm));
             BackButton = new Button();
             StdGView = new DataGridView();
             FstButton = new Button();
@@ -324,6 +325,7 @@
             Controls.Add(FstButton);
             Controls.Add(StdGView);
             Controls.Add(BackButton);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "StsForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Students";
