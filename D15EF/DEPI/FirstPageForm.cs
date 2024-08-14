@@ -1,11 +1,50 @@
+using System.Media;
+using Timer = System.Windows.Forms.Timer;
+
 namespace DEPI
 {
     public partial class FirstPageForm : Form
     {
+        private Timer timer;
+        private SoundPlayer player;
+
         public FirstPageForm()
         {
             InitializeComponent();
+            using (player = new SoundPlayer(@".\Audio File\sally-aala-mohamed.wav"))
+            {
+                player.Play();
+            }
+            InitializeTimer();
+            player = new SoundPlayer(@".\Audio File\sally-aala-mohamed.wav");
         }
+
+        #region Code For running the audio file
+        private void InitializeTimer()
+        {
+            timer = new Timer();
+            timer.Interval = 60000; // 1 minute = 60000 ms
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            PlayWavFile();
+        }
+
+        private void PlayWavFile()
+        {
+            try
+            {
+                player.Play();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error playing sound: {ex.Message}");
+            }
+        }
+        #endregion
 
         private void StButton_Click(object sender, EventArgs e)
         {
