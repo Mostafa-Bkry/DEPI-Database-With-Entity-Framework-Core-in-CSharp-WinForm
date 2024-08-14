@@ -52,7 +52,27 @@
             ShowStSuperButton = new Button();
             ShowDeptButton = new Button();
             ShowStCrsButton = new Button();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            label13 = new Label();
+            textBox6 = new TextBox();
+            label12 = new Label();
+            textBox5 = new TextBox();
+            label11 = new Label();
+            textBox4 = new TextBox();
+            label10 = new Label();
+            textBox3 = new TextBox();
+            label9 = new Label();
+            textBox2 = new TextBox();
+            textBox1 = new TextBox();
+            label8 = new Label();
+            button1 = new Button();
+            button2 = new Button();
+            textBox7 = new TextBox();
+            label14 = new Label();
+            label15 = new Label();
+            label16 = new Label();
             ((System.ComponentModel.ISupportInitialize)StdGView).BeginInit();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // BackButton
@@ -123,7 +143,7 @@
             // 
             // IdTBox
             // 
-            IdTBox.Location = new Point(173, 18);
+            IdTBox.Location = new Point(173, 58);
             IdTBox.Name = "IdTBox";
             IdTBox.Size = new Size(125, 23);
             IdTBox.TabIndex = 4;
@@ -131,7 +151,7 @@
             // 
             // FNameTBox
             // 
-            FNameTBox.Location = new Point(173, 60);
+            FNameTBox.Location = new Point(173, 100);
             FNameTBox.Name = "FNameTBox";
             FNameTBox.Size = new Size(125, 23);
             FNameTBox.TabIndex = 4;
@@ -139,7 +159,7 @@
             // 
             // LNameTBox
             // 
-            LNameTBox.Location = new Point(173, 102);
+            LNameTBox.Location = new Point(173, 142);
             LNameTBox.Name = "LNameTBox";
             LNameTBox.Size = new Size(125, 23);
             LNameTBox.TabIndex = 4;
@@ -151,7 +171,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             label1.ForeColor = SystemColors.ButtonFace;
-            label1.Location = new Point(111, 21);
+            label1.Location = new Point(111, 61);
             label1.Name = "label1";
             label1.Size = new Size(25, 20);
             label1.TabIndex = 5;
@@ -163,7 +183,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(84, 60);
+            label2.Location = new Point(84, 100);
             label2.Name = "label2";
             label2.Size = new Size(86, 20);
             label2.TabIndex = 5;
@@ -175,7 +195,7 @@
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             label3.ForeColor = SystemColors.ButtonFace;
-            label3.Location = new Point(84, 102);
+            label3.Location = new Point(84, 142);
             label3.Name = "label3";
             label3.Size = new Size(84, 20);
             label3.TabIndex = 5;
@@ -187,7 +207,7 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             label4.ForeColor = SystemColors.ButtonFace;
-            label4.Location = new Point(334, 106);
+            label4.Location = new Point(334, 146);
             label4.Name = "label4";
             label4.Size = new Size(114, 20);
             label4.TabIndex = 9;
@@ -199,7 +219,7 @@
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             label5.ForeColor = SystemColors.ButtonFace;
-            label5.Location = new Point(354, 63);
+            label5.Location = new Point(354, 103);
             label5.Name = "label5";
             label5.Size = new Size(66, 20);
             label5.TabIndex = 10;
@@ -211,7 +231,7 @@
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             label6.ForeColor = SystemColors.ButtonFace;
-            label6.Location = new Point(368, 21);
+            label6.Location = new Point(368, 61);
             label6.Name = "label6";
             label6.Size = new Size(37, 20);
             label6.TabIndex = 11;
@@ -219,7 +239,7 @@
             // 
             // DeptTBox
             // 
-            DeptTBox.Location = new Point(449, 106);
+            DeptTBox.Location = new Point(449, 146);
             DeptTBox.Name = "DeptTBox";
             DeptTBox.Size = new Size(125, 23);
             DeptTBox.TabIndex = 6;
@@ -227,7 +247,7 @@
             // 
             // AddrTBox
             // 
-            AddrTBox.Location = new Point(449, 64);
+            AddrTBox.Location = new Point(449, 104);
             AddrTBox.Name = "AddrTBox";
             AddrTBox.Size = new Size(125, 23);
             AddrTBox.TabIndex = 7;
@@ -235,7 +255,7 @@
             // 
             // AgeTBox
             // 
-            AgeTBox.Location = new Point(449, 22);
+            AgeTBox.Location = new Point(449, 62);
             AgeTBox.Name = "AgeTBox";
             AgeTBox.Size = new Size(125, 23);
             AgeTBox.TabIndex = 8;
@@ -243,7 +263,7 @@
             // 
             // SuperTBox
             // 
-            SuperTBox.Location = new Point(627, 77);
+            SuperTBox.Location = new Point(627, 117);
             SuperTBox.Name = "SuperTBox";
             SuperTBox.Size = new Size(125, 23);
             SuperTBox.TabIndex = 6;
@@ -255,7 +275,7 @@
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             label7.ForeColor = SystemColors.ButtonFace;
-            label7.Location = new Point(639, 51);
+            label7.Location = new Point(639, 91);
             label7.Name = "label7";
             label7.Size = new Size(104, 20);
             label7.TabIndex = 9;
@@ -294,14 +314,230 @@
             ShowStCrsButton.UseVisualStyleBackColor = true;
             ShowStCrsButton.Click += ShowStCrsButton_Click;
             // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.BackColor = Color.Transparent;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 42.570282F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 57.429718F));
+            tableLayoutPanel1.Controls.Add(label13, 0, 5);
+            tableLayoutPanel1.Controls.Add(textBox6, 1, 5);
+            tableLayoutPanel1.Controls.Add(label12, 0, 4);
+            tableLayoutPanel1.Controls.Add(textBox5, 1, 4);
+            tableLayoutPanel1.Controls.Add(label11, 0, 3);
+            tableLayoutPanel1.Controls.Add(textBox4, 1, 3);
+            tableLayoutPanel1.Controls.Add(label10, 0, 2);
+            tableLayoutPanel1.Controls.Add(textBox3, 1, 2);
+            tableLayoutPanel1.Controls.Add(label9, 0, 1);
+            tableLayoutPanel1.Controls.Add(textBox2, 1, 1);
+            tableLayoutPanel1.Controls.Add(textBox1, 1, 0);
+            tableLayoutPanel1.Controls.Add(label8, 0, 0);
+            tableLayoutPanel1.Location = new Point(868, 61);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 6;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel1.Size = new Size(249, 287);
+            tableLayoutPanel1.TabIndex = 24;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.BackColor = Color.Transparent;
+            label13.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            label13.ForeColor = SystemColors.ButtonFace;
+            label13.Location = new Point(3, 235);
+            label13.Name = "label13";
+            label13.Size = new Size(84, 40);
+            label13.TabIndex = 36;
+            label13.Text = "Supervisor ID";
+            label13.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // textBox6
+            // 
+            textBox6.Location = new Point(109, 238);
+            textBox6.Name = "textBox6";
+            textBox6.Size = new Size(114, 23);
+            textBox6.TabIndex = 35;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.BackColor = Color.Transparent;
+            label12.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            label12.ForeColor = SystemColors.ButtonFace;
+            label12.Location = new Point(3, 188);
+            label12.Name = "label12";
+            label12.Size = new Size(94, 40);
+            label12.TabIndex = 34;
+            label12.Text = "Department ID";
+            label12.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(109, 191);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(114, 23);
+            textBox5.TabIndex = 33;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.BackColor = Color.Transparent;
+            label11.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            label11.ForeColor = SystemColors.ButtonFace;
+            label11.Location = new Point(3, 141);
+            label11.Name = "label11";
+            label11.Size = new Size(66, 20);
+            label11.TabIndex = 32;
+            label11.Text = "Address";
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(109, 144);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(114, 23);
+            textBox4.TabIndex = 31;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.BackColor = Color.Transparent;
+            label10.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            label10.ForeColor = SystemColors.ButtonFace;
+            label10.Location = new Point(3, 94);
+            label10.Name = "label10";
+            label10.Size = new Size(37, 20);
+            label10.TabIndex = 30;
+            label10.Text = "Age";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(109, 97);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(114, 23);
+            textBox3.TabIndex = 29;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = Color.Transparent;
+            label9.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            label9.ForeColor = SystemColors.ButtonFace;
+            label9.Location = new Point(3, 47);
+            label9.Name = "label9";
+            label9.Size = new Size(84, 20);
+            label9.TabIndex = 28;
+            label9.Text = "Last Name";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(109, 50);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(114, 23);
+            textBox2.TabIndex = 27;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(109, 3);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(114, 23);
+            textBox1.TabIndex = 26;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.BackColor = Color.Transparent;
+            label8.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            label8.ForeColor = SystemColors.ButtonFace;
+            label8.Location = new Point(3, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(86, 20);
+            label8.TabIndex = 25;
+            label8.Text = "First Name";
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 11F);
+            button1.Location = new Point(907, 354);
+            button1.Name = "button1";
+            button1.Size = new Size(154, 33);
+            button1.TabIndex = 25;
+            button1.Text = "Insert / Update";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Font = new Font("Segoe UI", 11F);
+            button2.Location = new Point(942, 445);
+            button2.Name = "button2";
+            button2.Size = new Size(87, 33);
+            button2.TabIndex = 26;
+            button2.Text = "Delete";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // textBox7
+            // 
+            textBox7.Location = new Point(980, 416);
+            textBox7.Name = "textBox7";
+            textBox7.Size = new Size(125, 23);
+            textBox7.TabIndex = 36;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.BackColor = Color.Transparent;
+            label14.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            label14.ForeColor = SystemColors.ButtonFace;
+            label14.Location = new Point(866, 414);
+            label14.Name = "label14";
+            label14.Size = new Size(103, 25);
+            label14.TabIndex = 38;
+            label14.Text = "Student ID";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.BackColor = Color.Transparent;
+            label15.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            label15.ForeColor = SystemColors.ButtonFace;
+            label15.Location = new Point(841, 9);
+            label15.Name = "label15";
+            label15.Size = new Size(276, 28);
+            label15.TabIndex = 39;
+            label15.Text = "Make Changes On Database";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.BackColor = Color.Transparent;
+            label16.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            label16.ForeColor = SystemColors.ButtonFace;
+            label16.Location = new Point(303, 9);
+            label16.Name = "label16";
+            label16.Size = new Size(195, 28);
+            label16.TabIndex = 40;
+            label16.Text = "Search And Display";
+            // 
             // StsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.BackG2;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(820, 523);
+            ClientSize = new Size(1157, 523);
             ControlBox = false;
+            Controls.Add(label16);
+            Controls.Add(label15);
+            Controls.Add(button2);
+            Controls.Add(textBox7);
+            Controls.Add(label14);
+            Controls.Add(button1);
+            Controls.Add(tableLayoutPanel1);
             Controls.Add(label7);
             Controls.Add(label4);
             Controls.Add(label5);
@@ -330,6 +566,8 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Students";
             ((System.ComponentModel.ISupportInitialize)StdGView).EndInit();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -359,5 +597,24 @@
         private Button ShowStSuperButton;
         private Button ShowDeptButton;
         private Button ShowStCrsButton;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Label label13;
+        private TextBox textBox6;
+        private Label label12;
+        private TextBox textBox5;
+        private Label label11;
+        private TextBox textBox4;
+        private Label label10;
+        private TextBox textBox3;
+        private Label label9;
+        private TextBox textBox2;
+        private TextBox textBox1;
+        private Label label8;
+        private Button button1;
+        private Button button2;
+        private TextBox textBox7;
+        private Label label14;
+        private Label label15;
+        private Label label16;
     }
 }

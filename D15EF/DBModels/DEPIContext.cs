@@ -69,7 +69,7 @@ namespace DBModels
              */
             optionsBuilder.UseSqlServer("Data Source=DESKTOP-8A1PS5P;Initial Catalog=DBdepi;Integrated Security=True;Trust Server Certificate=True");
             //base.OnConfiguring(optionsBuilder);
-        } 
+        }
         #endregion
     }
 }

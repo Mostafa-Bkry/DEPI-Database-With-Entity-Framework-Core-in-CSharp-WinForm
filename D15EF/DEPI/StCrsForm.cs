@@ -1,5 +1,4 @@
 ﻿using DBModels;
-using System.Diagnostics;
 
 namespace DEPI
 {
@@ -126,7 +125,7 @@ namespace DEPI
         private void ShowDetailButton_Click(object sender, EventArgs e)
         {
             var stCrs = stCourses.Join(st.Students, scr => scr.Stud_Id, s => s.St_Id, (scr, s)
-                => new {  scr.Crs_Id, s.Fname, s.Sname, scr.Grade, scr.Stud_Id, });
+                => new { scr.Crs_Id, s.Fname, s.Sname, scr.Grade, scr.Stud_Id, });
             var crs = stCrs.Join(st.Courses, scr => scr.Crs_Id, c => c.Crs_Id, (scr, c)
                 => new { c.Crs_Id, c.Crs_Name, scr.Stud_Id, scr.Fname, scr.Sname, scr.Grade, });
 

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace DBModels
+﻿namespace DBModels
 {
     public class StudCourse
     {
