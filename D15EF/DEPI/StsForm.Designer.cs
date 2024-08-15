@@ -54,20 +54,20 @@
             ShowStCrsButton = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             label13 = new Label();
-            textBox6 = new TextBox();
+            txtSuperId = new TextBox();
             label12 = new Label();
-            textBox5 = new TextBox();
+            txtDeptId = new TextBox();
             label11 = new Label();
-            textBox4 = new TextBox();
+            txtAddress = new TextBox();
             label10 = new Label();
-            textBox3 = new TextBox();
+            txtAge = new TextBox();
             label9 = new Label();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            txtLName = new TextBox();
+            txtFName = new TextBox();
             label8 = new Label();
-            button1 = new Button();
-            button2 = new Button();
-            textBox7 = new TextBox();
+            InsertUpdateButton = new Button();
+            DeleteButton = new Button();
+            txtStIdDel = new TextBox();
             label14 = new Label();
             label15 = new Label();
             label16 = new Label();
@@ -94,8 +94,9 @@
             StdGView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             StdGView.Location = new Point(35, 280);
             StdGView.Name = "StdGView";
-            StdGView.Size = new Size(746, 240);
+            StdGView.Size = new Size(761, 240);
             StdGView.TabIndex = 1;
+            StdGView.RowStateChanged += StdGView_RowStateChanged;
             // 
             // FstButton
             // 
@@ -135,7 +136,7 @@
             RestButton.Font = new Font("Segoe UI", 9F);
             RestButton.Location = new Point(694, 232);
             RestButton.Name = "RestButton";
-            RestButton.Size = new Size(87, 33);
+            RestButton.Size = new Size(99, 33);
             RestButton.TabIndex = 3;
             RestButton.Text = "Reset";
             RestButton.UseVisualStyleBackColor = true;
@@ -321,16 +322,16 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 42.570282F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 57.429718F));
             tableLayoutPanel1.Controls.Add(label13, 0, 5);
-            tableLayoutPanel1.Controls.Add(textBox6, 1, 5);
+            tableLayoutPanel1.Controls.Add(txtSuperId, 1, 5);
             tableLayoutPanel1.Controls.Add(label12, 0, 4);
-            tableLayoutPanel1.Controls.Add(textBox5, 1, 4);
+            tableLayoutPanel1.Controls.Add(txtDeptId, 1, 4);
             tableLayoutPanel1.Controls.Add(label11, 0, 3);
-            tableLayoutPanel1.Controls.Add(textBox4, 1, 3);
+            tableLayoutPanel1.Controls.Add(txtAddress, 1, 3);
             tableLayoutPanel1.Controls.Add(label10, 0, 2);
-            tableLayoutPanel1.Controls.Add(textBox3, 1, 2);
+            tableLayoutPanel1.Controls.Add(txtAge, 1, 2);
             tableLayoutPanel1.Controls.Add(label9, 0, 1);
-            tableLayoutPanel1.Controls.Add(textBox2, 1, 1);
-            tableLayoutPanel1.Controls.Add(textBox1, 1, 0);
+            tableLayoutPanel1.Controls.Add(txtLName, 1, 1);
+            tableLayoutPanel1.Controls.Add(txtFName, 1, 0);
             tableLayoutPanel1.Controls.Add(label8, 0, 0);
             tableLayoutPanel1.Location = new Point(868, 61);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -357,12 +358,13 @@
             label13.Text = "Supervisor ID";
             label13.TextAlign = ContentAlignment.TopCenter;
             // 
-            // textBox6
+            // txtSuperId
             // 
-            textBox6.Location = new Point(109, 238);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(114, 23);
-            textBox6.TabIndex = 35;
+            txtSuperId.Location = new Point(109, 238);
+            txtSuperId.Name = "txtSuperId";
+            txtSuperId.PlaceholderText = "NULL";
+            txtSuperId.Size = new Size(114, 23);
+            txtSuperId.TabIndex = 35;
             // 
             // label12
             // 
@@ -377,12 +379,13 @@
             label12.Text = "Department ID";
             label12.TextAlign = ContentAlignment.TopCenter;
             // 
-            // textBox5
+            // txtDeptId
             // 
-            textBox5.Location = new Point(109, 191);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(114, 23);
-            textBox5.TabIndex = 33;
+            txtDeptId.Location = new Point(109, 191);
+            txtDeptId.Name = "txtDeptId";
+            txtDeptId.PlaceholderText = "NULL";
+            txtDeptId.Size = new Size(114, 23);
+            txtDeptId.TabIndex = 33;
             // 
             // label11
             // 
@@ -396,12 +399,13 @@
             label11.TabIndex = 32;
             label11.Text = "Address";
             // 
-            // textBox4
+            // txtAddress
             // 
-            textBox4.Location = new Point(109, 144);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(114, 23);
-            textBox4.TabIndex = 31;
+            txtAddress.Location = new Point(109, 144);
+            txtAddress.Name = "txtAddress";
+            txtAddress.PlaceholderText = "NULL";
+            txtAddress.Size = new Size(114, 23);
+            txtAddress.TabIndex = 31;
             // 
             // label10
             // 
@@ -415,12 +419,13 @@
             label10.TabIndex = 30;
             label10.Text = "Age";
             // 
-            // textBox3
+            // txtAge
             // 
-            textBox3.Location = new Point(109, 97);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(114, 23);
-            textBox3.TabIndex = 29;
+            txtAge.Location = new Point(109, 97);
+            txtAge.Name = "txtAge";
+            txtAge.PlaceholderText = "NULL";
+            txtAge.Size = new Size(114, 23);
+            txtAge.TabIndex = 29;
             // 
             // label9
             // 
@@ -434,19 +439,21 @@
             label9.TabIndex = 28;
             label9.Text = "Last Name";
             // 
-            // textBox2
+            // txtLName
             // 
-            textBox2.Location = new Point(109, 50);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(114, 23);
-            textBox2.TabIndex = 27;
+            txtLName.Location = new Point(109, 50);
+            txtLName.Name = "txtLName";
+            txtLName.PlaceholderText = "NULL";
+            txtLName.Size = new Size(114, 23);
+            txtLName.TabIndex = 27;
             // 
-            // textBox1
+            // txtFName
             // 
-            textBox1.Location = new Point(109, 3);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(114, 23);
-            textBox1.TabIndex = 26;
+            txtFName.Location = new Point(109, 3);
+            txtFName.Name = "txtFName";
+            txtFName.PlaceholderText = "NULL";
+            txtFName.Size = new Size(114, 23);
+            txtFName.TabIndex = 26;
             // 
             // label8
             // 
@@ -460,32 +467,34 @@
             label8.TabIndex = 25;
             label8.Text = "First Name";
             // 
-            // button1
+            // InsertUpdateButton
             // 
-            button1.Font = new Font("Segoe UI", 11F);
-            button1.Location = new Point(907, 354);
-            button1.Name = "button1";
-            button1.Size = new Size(154, 33);
-            button1.TabIndex = 25;
-            button1.Text = "Insert / Update";
-            button1.UseVisualStyleBackColor = true;
+            InsertUpdateButton.Font = new Font("Segoe UI", 11F);
+            InsertUpdateButton.Location = new Point(907, 354);
+            InsertUpdateButton.Name = "InsertUpdateButton";
+            InsertUpdateButton.Size = new Size(154, 33);
+            InsertUpdateButton.TabIndex = 25;
+            InsertUpdateButton.Text = "Insert / Update";
+            InsertUpdateButton.UseVisualStyleBackColor = true;
+            InsertUpdateButton.Click += InsertUpdateButton_Click;
             // 
-            // button2
+            // DeleteButton
             // 
-            button2.Font = new Font("Segoe UI", 11F);
-            button2.Location = new Point(942, 445);
-            button2.Name = "button2";
-            button2.Size = new Size(87, 33);
-            button2.TabIndex = 26;
-            button2.Text = "Delete";
-            button2.UseVisualStyleBackColor = true;
+            DeleteButton.Font = new Font("Segoe UI", 11F);
+            DeleteButton.Location = new Point(942, 445);
+            DeleteButton.Name = "DeleteButton";
+            DeleteButton.Size = new Size(87, 33);
+            DeleteButton.TabIndex = 26;
+            DeleteButton.Text = "Delete";
+            DeleteButton.UseVisualStyleBackColor = true;
+            DeleteButton.Click += DeleteButton_Click;
             // 
-            // textBox7
+            // txtStIdDel
             // 
-            textBox7.Location = new Point(980, 416);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(125, 23);
-            textBox7.TabIndex = 36;
+            txtStIdDel.Location = new Point(980, 416);
+            txtStIdDel.Name = "txtStIdDel";
+            txtStIdDel.Size = new Size(125, 23);
+            txtStIdDel.TabIndex = 36;
             // 
             // label14
             // 
@@ -533,10 +542,10 @@
             ControlBox = false;
             Controls.Add(label16);
             Controls.Add(label15);
-            Controls.Add(button2);
-            Controls.Add(textBox7);
+            Controls.Add(DeleteButton);
+            Controls.Add(txtStIdDel);
             Controls.Add(label14);
-            Controls.Add(button1);
+            Controls.Add(InsertUpdateButton);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(label7);
             Controls.Add(label4);
@@ -599,20 +608,20 @@
         private Button ShowStCrsButton;
         private TableLayoutPanel tableLayoutPanel1;
         private Label label13;
-        private TextBox textBox6;
+        private TextBox txtSuperId;
         private Label label12;
-        private TextBox textBox5;
+        private TextBox txtDeptId;
         private Label label11;
-        private TextBox textBox4;
+        private TextBox txtAddress;
         private Label label10;
-        private TextBox textBox3;
+        private TextBox txtAge;
         private Label label9;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox txtLName;
+        private TextBox txtFName;
         private Label label8;
-        private Button button1;
-        private Button button2;
-        private TextBox textBox7;
+        private Button InsertUpdateButton;
+        private Button DeleteButton;
+        private TextBox txtStIdDel;
         private Label label14;
         private Label label15;
         private Label label16;

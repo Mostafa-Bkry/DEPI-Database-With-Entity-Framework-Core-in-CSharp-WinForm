@@ -7,6 +7,8 @@ namespace DEPI
         DEPIContext st = new DEPIContext();
         List<Student> students;
 
+        Student selectedStudent = new Student();
+
         public StsForm()
         {
             InitializeComponent();
@@ -25,23 +27,23 @@ namespace DEPI
             string fName, lName, address;
 
             //s.St_Id, s.Fname, s.Sname, s.Age, s.Address, s.Dept_Id, s.St_super
-            for (int row = 0; row < StdGView.Rows.Count; row++)
+            for (int row = 0; row < StdGView?.Rows?.Count; row++)
             {
                 id =
-                    int.TryParse(StdGView.Rows[row].Cells["St_Id"].Value.ToString(), out int chkId) ?
+                    int.TryParse(StdGView.Rows[row].Cells["St_Id"].Value?.ToString(), out int chkId) ?
                     chkId : -1;
 
-                fName = StdGView.Rows[row].Cells["Fname"].Value.ToString() ?? "NA";
-                lName = StdGView.Rows[row].Cells["Sname"].Value.ToString() ?? "NA";
+                fName = StdGView?.Rows[row]?.Cells["Fname"]?.Value?.ToString() ?? "NA";
+                lName = StdGView?.Rows[row]?.Cells["Sname"]?.Value?.ToString() ?? "NA";
 
                 age =
-                    int.TryParse(StdGView.Rows[row].Cells["Age"].Value.ToString(), out int checkAge) ?
+                    int.TryParse(StdGView?.Rows[row]?.Cells["Age"]?.Value?.ToString() ?? "NA", out int checkAge) ?
                     checkAge : -1;
 
-                address = StdGView.Rows[row].Cells["Address"].Value.ToString() ?? "NA";
+                address = StdGView?.Rows[row]?.Cells["Address"]?.Value?.ToString() ?? "NA";
 
                 deptId =
-                    int.TryParse(StdGView.Rows[row].Cells["Dept_Id"].Value.ToString(), out int chkDid) ?
+                    int.TryParse(StdGView?.Rows[row]?.Cells["Dept_Id"]?.Value?.ToString() ?? "NA", out int chkDid) ?
                     chkDid : -1;
 
                 superId =
@@ -51,12 +53,12 @@ namespace DEPI
                 stLst.Add(new Student()
                 {
                     St_Id = id,
-                    Fname = fName,
-                    Sname = lName,
-                    Age = age,
-                    Dept_Id = deptId,
-                    Address = address,
-                    St_super = superId
+                    Fname = fName == "NA" ? null : fName,
+                    Sname = lName == "NA" ? null : lName,
+                    Age = age == -1 ? null : age,
+                    Dept_Id = deptId == -1 ? null : deptId,
+                    Address = address == "NA" ? null : address,
+                    St_super = superId == -1 ? null : superId
                 });
             }
 
@@ -80,6 +82,7 @@ namespace DEPI
             AddrTBox.Clear();
             DeptTBox.Clear();
 
+            //students = st.Students.ToList();
             StdGView.DataSource = students
                 .Select(s => new
                 { s.St_Id, s.Fname, s.Sname, s.Age, s.Address, s.Dept_Id, s.St_super })
@@ -206,7 +209,6 @@ namespace DEPI
         }
         #endregion
 
-
         #region TextBoxes Logic
         private void IdTBox_TextChanged(object sender, EventArgs e)
         {
@@ -293,5 +295,277 @@ namespace DEPI
         }
         #endregion
 
+        #region CRUD Operations
+        private void ResetCRUDFields()
+        {
+            txtFName.Clear();
+            txtLName.Clear();
+            txtAge.Clear();
+            txtAddress.Clear();
+            txtDeptId.Clear();
+            txtSuperId.Clear();
+        }
+
+        #region Insert & Update
+        private void InsertUpdateButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtFName.Text))
+            {
+                MessageBox.Show("Enter At Least The Student First Name", "Data Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult yesNo = DialogResult.Yes;
+            if (selectedStudent.St_Id > 0)
+            {
+                yesNo = MessageBox.Show("YES: Insert new student with Same data\n NO: Update Student",
+                    "Insert OR Update", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            }
+
+            //Insert
+            if (yesNo == DialogResult.Yes)
+            {
+                if (InsertStudent() != null)
+                {
+                    st.Students.Add(InsertStudent());
+                    st.SaveChanges();
+                    MessageBox.Show("Added The Student Successfully", "Done", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    ResetCRUDFields();
+                }
+                else
+                {
+                    MessageBox.Show("Faild To Insert This Student", "Data Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            //Update
+            else if (yesNo == DialogResult.No)
+            {
+                if (UpdateStudent() != null)
+                {
+                    Student? updatedSt = UpdateStudent();
+
+                    if (updatedSt.Fname == selectedStudent.Fname && updatedSt.Sname == selectedStudent.Sname &&
+                        updatedSt.Age == selectedStudent.Age && updatedSt.Address == selectedStudent.Address &&
+                        updatedSt.Dept_Id == selectedStudent.Dept_Id && updatedSt.St_super == selectedStudent.St_super)
+                    {
+                        MessageBox.Show("Faild To Update This Student Because you never updated any of data", "Data Error"
+                            , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    var oldStudent = st.Students.FirstOrDefault(s => s.St_Id == selectedStudent.St_Id);
+                    oldStudent.Fname = updatedSt.Fname;
+                    oldStudent.Sname = updatedSt.Sname;
+                    oldStudent.Age = updatedSt.Age;
+                    oldStudent.Address = updatedSt.Address;
+                    oldStudent.Dept_Id = updatedSt.Dept_Id;
+                    oldStudent.St_super = updatedSt.St_super;
+                    st.SaveChanges();
+                    MessageBox.Show($"Updated Student With Id: {selectedStudent.St_Id} Successfully", "Done", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    ResetCRUDFields();
+                }
+                else
+                {
+                    MessageBox.Show("Faild To Update This Student", "Data Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                return;
+            }
+
+            //Show new data on gridview
+            students = st.Students.ToList();
+            StdGView.DataSource = students
+                .Select(s => new
+                { s.St_Id, s.Fname, s.Sname, s.Age, s.Address, s.Dept_Id, s.St_super })
+                .ToList();
+        }
+
+        private Student? InsertStudent()
+        {
+            Student newStudent = new Student()
+            {
+                Fname = string.IsNullOrEmpty(txtFName.Text) ? null : txtFName.Text,
+                Sname = string.IsNullOrEmpty(txtLName.Text) ? null : txtLName.Text,
+                Address = string.IsNullOrEmpty(txtAddress.Text) ? null : txtAddress.Text,
+            };
+
+            if (string.IsNullOrEmpty(txtAge.Text))
+            {
+                newStudent.Age = null;
+            }
+            else if (int.TryParse(txtAge.Text, out int chkAge) && chkAge > 0)
+            {
+                newStudent.Age = chkAge;
+            }
+            else
+            {
+                MessageBox.Show("Not Valid Age Value", "Insertion Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                txtAge.Focus();
+                return default;
+            }
+
+            if (string.IsNullOrEmpty(txtDeptId.Text))
+            {
+                newStudent.Dept_Id = null;
+            }
+            else if (int.TryParse(txtDeptId.Text, out int chkDeptId))
+            {
+                if (st.Departments.FirstOrDefault(d => d.Dept_Id == chkDeptId) != null)
+                    newStudent.Dept_Id = chkDeptId;
+                else
+                {
+                    MessageBox.Show("Check Department ID (Not Found)", "Insertion Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return default;
+                }
+            }
+
+            if (string.IsNullOrEmpty(txtSuperId.Text))
+            {
+                newStudent.St_super = null;
+            }
+            else if (int.TryParse(txtSuperId.Text, out int chkSuperId))
+            {
+                if (students.FirstOrDefault(s => s.St_Id == chkSuperId) != null)
+                    newStudent.St_super = chkSuperId;
+                else
+                {
+                    MessageBox.Show("Check SuperVisor ID (Not Found)", "Insertion Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return default;
+                }
+            }
+            return newStudent;
+        }
+
+        private Student? UpdateStudent()
+        {
+            Student updatedStudent = new Student()
+            {
+                Fname = string.IsNullOrEmpty(txtFName.Text) ? null : txtFName.Text,
+                Sname = string.IsNullOrEmpty(txtLName.Text) ? null : txtLName.Text,
+                Address = string.IsNullOrEmpty(txtAddress.Text) ? null : txtAddress.Text,
+            };
+
+            if (string.IsNullOrEmpty(txtAge.Text))
+            {
+                updatedStudent.Age = null;
+            }
+            else if (int.TryParse(txtAge.Text, out int chkAge) && chkAge > 0)
+            {
+                updatedStudent.Age = chkAge;
+            }
+            else
+            {
+                MessageBox.Show("Not Valid Age Value", "Insertion Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                txtAge.Focus();
+                return default;
+            }
+
+            if (string.IsNullOrEmpty(txtDeptId.Text))
+            {
+                updatedStudent.Dept_Id = null;
+            }
+            else if (int.TryParse(txtDeptId.Text, out int chkDeptId))
+            {
+                if (st.Departments.FirstOrDefault(d => d.Dept_Id == chkDeptId) != null)
+                    updatedStudent.Dept_Id = chkDeptId;
+                else
+                {
+                    MessageBox.Show("Check Department ID (Not Found)", "Insertion Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return default;
+                }
+            }
+
+            if (string.IsNullOrEmpty(txtSuperId.Text))
+            {
+                updatedStudent.St_super = null;
+            }
+            else if (int.TryParse(txtSuperId.Text, out int chkSuperId))
+            {
+                //check if the st_id exists && not supervisor supervise himself
+                if (students.FirstOrDefault(s => s.St_Id == chkSuperId) != null && selectedStudent.St_Id != chkSuperId)
+                    updatedStudent.St_super = chkSuperId;
+                else
+                {
+                    MessageBox.Show("Check SuperVisor ID (Not Found)", "Insertion Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return default;
+                }
+            }
+            return updatedStudent;
+        }
+        #endregion
+
+        #region Delete
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            //int stIdToBeDeleted = int.TryParse(txtStIdDel.Text, out int delID) ? delID : -1;
+            if(int.TryParse(txtStIdDel.Text, out int delID))
+            {
+                var stud = st.Students.FirstOrDefault(s => s.St_Id == delID);
+                if (stud != null)
+                {
+                    st.Students.Remove(stud);
+                    st.SaveChanges();
+                    MessageBox.Show($"Deleted The Student With Id: {delID} Successfully", "Done", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Faild To Delete This Student (Not Found)", "Deletion Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Faild To Delete This Student (Not Found)", "Deletion Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                return;
+            }
+
+            //Show new data on gridview
+            students = st.Students.ToList();
+            StdGView.DataSource = students
+                .Select(s => new
+                { s.St_Id, s.Fname, s.Sname, s.Age, s.Address, s.Dept_Id, s.St_super })
+                .ToList();
+        }
+        #endregion
+
+        private void StdGView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            //only selected state will work on StdGView
+            if (e.StateChanged != DataGridViewElementStates.Selected) return;
+
+            if (e.Row.Selected)
+            {
+                MessageBox.Show($"{e.Row.Index}:::::{e.Row.Selected}");
+                selectedStudent = students[e.Row.Index];
+                txtFName.Text = selectedStudent.Fname;
+                txtLName.Text = selectedStudent.Sname;
+                txtAge.Text = selectedStudent.Age.ToString();
+                txtAddress.Text = selectedStudent.Address;
+                txtDeptId.Text = selectedStudent.Dept_Id.ToString();
+                txtSuperId.Text = selectedStudent.St_super.ToString();
+                //if (selectedStudent.St_super == null)
+                //    txtSuperId.PlaceholderText = "NULL";
+                //else
+                //    txtSuperId.Text = selectedStudent.St_super.ToString();
+            }
+        }
+        #endregion
     }
 }
