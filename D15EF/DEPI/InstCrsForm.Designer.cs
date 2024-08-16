@@ -60,6 +60,7 @@
             // 
             // StdGView
             // 
+            StdGView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             StdGView.BackgroundColor = SystemColors.ControlLight;
             StdGView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             StdGView.Location = new Point(35, 256);

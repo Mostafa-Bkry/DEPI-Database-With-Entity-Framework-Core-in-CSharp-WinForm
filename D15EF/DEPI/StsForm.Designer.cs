@@ -90,6 +90,7 @@
             // 
             // StdGView
             // 
+            StdGView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             StdGView.BackgroundColor = SystemColors.ControlLight;
             StdGView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             StdGView.Location = new Point(35, 280);
@@ -495,6 +496,7 @@
             txtStIdDel.Name = "txtStIdDel";
             txtStIdDel.Size = new Size(125, 23);
             txtStIdDel.TabIndex = 36;
+            txtStIdDel.TextChanged += txtStIdDel_TextChanged;
             // 
             // label14
             // 

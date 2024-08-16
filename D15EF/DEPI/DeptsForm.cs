@@ -7,6 +7,8 @@ namespace DEPI
         DEPIContext st = new DEPIContext();
         List<Department> departments;
 
+        Department selectedDepartment = new Department();
+
         public DeptsForm()
         {
             InitializeComponent();
@@ -253,6 +255,288 @@ namespace DEPI
             StdGView.DataSource = string.IsNullOrEmpty(HireDateBox.Text) ? departments.Select(d => new
             { d.Dept_Id, d.Dept_Name, d.Dept_Desc, d.Dept_Location, d.Dept_Manager, d.Manager_HireDate }).ToList() : r;
         }
+        #endregion
+
+        #region CRUD Operations
+        private void ResetCRUDFields()
+        {
+            txtDeptName.Clear();
+            txtDescription.Clear();
+            txtLocation.Clear();
+            txtManager.Clear();
+            txtHireDate.Clear();
+        }
+
+        #region Insert & Update
+        private void InsertUpdateButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(txtDeptName.Text))
+                {
+                    MessageBox.Show("Enter At Least The Department Name", "Data Error", MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                    return;
+                }
+
+                DialogResult yesNo = DialogResult.Yes;
+                if (selectedDepartment.Dept_Id > 0)
+                {
+                    yesNo = MessageBox.Show("YES: Insert New Department\n NO: Update The Department",
+                        "Insert OR Update", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                }
+
+                //Insert
+                if (yesNo == DialogResult.Yes)
+                {
+                    if (InsertDepartment() != null)
+                    {
+                        st.Departments.Add(InsertDepartment());
+                        st.SaveChanges();
+                        MessageBox.Show("Added The Department Successfully", "Done", MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                        ResetCRUDFields();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Faild To Insert This Department", "Data Error", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                //Update
+                else if (yesNo == DialogResult.No)
+                {
+                    if (UpdateDepartment() != null)
+                    {
+                        Department? updatedDept = UpdateDepartment();
+
+                        if (updatedDept.Dept_Name == selectedDepartment.Dept_Name &&
+                            updatedDept.Dept_Desc == selectedDepartment.Dept_Desc &&
+                            updatedDept.Dept_Location == selectedDepartment.Dept_Location &&
+                            updatedDept.Dept_Manager == selectedDepartment.Dept_Manager &&
+                            updatedDept.Manager_HireDate == selectedDepartment.Manager_HireDate)
+                        {
+                            MessageBox.Show("Faild To Update This Department Because you never updated any of data", "Data Error"
+                                , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        var oldDept = st.Departments.FirstOrDefault(d => d.Dept_Id == selectedDepartment.Dept_Id);
+                        oldDept.Dept_Name = updatedDept.Dept_Name;
+                        oldDept.Dept_Desc = updatedDept.Dept_Desc;
+                        oldDept.Dept_Location = updatedDept.Dept_Location;
+                        oldDept.Dept_Manager = updatedDept.Dept_Manager;
+                        oldDept.Manager_HireDate = updatedDept.Manager_HireDate;
+                        st.SaveChanges();
+                        MessageBox.Show($"Updated Department With Id: {selectedDepartment.Dept_Id} Successfully", "Done", MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                        ResetCRUDFields();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Faild To Update This Department", "Data Error", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            //Show new data on gridview
+            departments = st.Departments.ToList();
+            StdGView.DataSource = departments
+                .Select(d => new
+                { d.Dept_Id, d.Dept_Name, d.Dept_Desc, d.Dept_Location, d.Dept_Manager, d.Manager_HireDate })
+                .ToList();
+        }
+
+        private Department? InsertDepartment()
+        {
+            try
+            {
+                Department newDept = new Department()
+                {
+                    Dept_Name = string.IsNullOrEmpty(txtDeptName.Text) ? null : txtDeptName.Text,
+                    Dept_Desc = string.IsNullOrEmpty(txtDescription.Text) ? null : txtDescription.Text,
+                    Dept_Location = string.IsNullOrEmpty(txtLocation.Text) ? null : txtLocation.Text,
+                };
+
+                if (string.IsNullOrEmpty(txtHireDate.Text))
+                {
+                    newDept.Manager_HireDate = null;
+                }
+                else if (DateTime.TryParse(txtHireDate.Text, out DateTime chkHiringDate))
+                {
+                    newDept.Manager_HireDate = chkHiringDate;
+                }
+                else
+                {
+                    MessageBox.Show("Not Valid Date Value", "Insertion Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    txtHireDate.Focus();
+                    return default;
+                }
+
+                if (string.IsNullOrEmpty(txtManager.Text))
+                {
+                    newDept.Dept_Manager = null;
+                }
+                else if (int.TryParse(txtManager.Text, out int chkManagerID))
+                {
+                    if (st.Instructors.FirstOrDefault(i => i.Ins_Id == chkManagerID) != null)
+                        newDept.Dept_Manager = chkManagerID;
+                    else
+                    {
+                        MessageBox.Show("Check Manager ID (Not Found)", "Insertion Error", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        return default;
+                    }
+                }
+
+                return newDept;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        private Department? UpdateDepartment()
+        {
+            try
+            {
+                Department updatedDept = new Department()
+                {
+                    Dept_Name = string.IsNullOrEmpty(txtDeptName.Text) ? null : txtDeptName.Text,
+                    Dept_Desc = string.IsNullOrEmpty(txtDescription.Text) ? null : txtDescription.Text,
+                    Dept_Location = string.IsNullOrEmpty(txtLocation.Text) ? null : txtLocation.Text,
+                };
+
+                if (string.IsNullOrEmpty(txtHireDate.Text))
+                {
+                    updatedDept.Manager_HireDate = null;
+                }
+                else if (DateTime.TryParse(txtHireDate.Text, out DateTime chkHiringDate))
+                {
+                    updatedDept.Manager_HireDate = chkHiringDate;
+                }
+                else
+                {
+                    MessageBox.Show("Not Valid Date Value", "Update Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    txtHireDate.Focus();
+                    return default;
+                }
+
+                if (string.IsNullOrEmpty(txtManager.Text))
+                {
+                    updatedDept.Dept_Manager = null;
+                }
+                else if (int.TryParse(txtManager.Text, out int chkManagerID))
+                {
+                    if (st.Instructors.FirstOrDefault(i => i.Ins_Id == chkManagerID) != null)
+                        updatedDept.Dept_Manager = chkManagerID;
+                    else
+                    {
+                        MessageBox.Show("Check Manager ID (Not Found)", "Update Error", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        return default;
+                    }
+                }
+
+                return updatedDept;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        #endregion
+
+        #region Delete
+        private void txtStIdDel_TextChanged(object sender, EventArgs e)
+        {
+            var r = departments.Where(d =>
+                d.Dept_Id == (int.TryParse(txtDeptIdDel.Text, out int check) ? check : -1))
+                .Select(d => new
+                { d.Dept_Id, d.Dept_Name, d.Dept_Desc, d.Dept_Location, d.Dept_Manager, d.Manager_HireDate })
+                .ToList();
+
+            StdGView.DataSource = string.IsNullOrEmpty(txtDeptIdDel.Text) ? departments.Select(d => new
+            { d.Dept_Id, d.Dept_Name, d.Dept_Desc, d.Dept_Location, d.Dept_Manager, d.Manager_HireDate }).ToList() : r;
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (int.TryParse(txtDeptIdDel.Text, out int delID))
+                {
+                    var dept = st.Departments.FirstOrDefault(d => d.Dept_Id == delID);
+                    if (dept != null)
+                    {
+                        st.Departments.Remove(dept);
+                        st.SaveChanges();
+                        MessageBox.Show($"Deleted The Department With Id: {delID} Successfully", "Done", MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Faild To Delete This Department (Not Found)", "Deletion Error", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Faild To Delete This Department (Check Input)", "Deletion Error", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            catch (Exception ex) 
+            { 
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            //Show new data on gridview
+            departments = st.Departments.ToList();
+            StdGView.DataSource = departments
+                .Select(d => new
+                { d.Dept_Id, d.Dept_Name, d.Dept_Desc, d.Dept_Location, d.Dept_Manager, d.Manager_HireDate })
+                .ToList();
+        }
+        #endregion
+
+        #region Row Selection in Grid View
+        private void StdGView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            if (e.StateChanged != DataGridViewElementStates.Selected) return;
+
+            if (e.Row.Selected)
+            {
+                MessageBox.Show($"Row {e.Row.Index + 1} Fetched Successfully", "Fetch", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                selectedDepartment = departments[e.Row.Index];
+                txtDeptName.Text = selectedDepartment.Dept_Name;
+                txtDescription.Text = selectedDepartment.Dept_Desc;
+                txtLocation.Text = selectedDepartment.Dept_Location;
+                txtManager.Text = selectedDepartment.Dept_Manager.ToString();
+                txtHireDate.Text = selectedDepartment.Manager_HireDate.ToString();
+            }
+        }
+
+        #endregion
+
         #endregion
     }
 }

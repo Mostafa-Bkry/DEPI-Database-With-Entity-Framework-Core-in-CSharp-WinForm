@@ -21,7 +21,7 @@ namespace DBModels
         public int? Dept_Manager { get; set; }
         public Instructor? Manager { get; set; }
 
-        public DateTime Manager_HireDate { get; set; }
+        public DateTime? Manager_HireDate { get; set; }
 
         public ICollection<Student> DeptStudents { get; set; }
 
