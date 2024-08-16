@@ -78,11 +78,14 @@
             // BackButton
             // 
             BackButton.BackColor = Color.FloralWhite;
+            BackButton.Dock = DockStyle.Left;
             BackButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             BackButton.ForeColor = Color.Indigo;
             BackButton.Location = new Point(0, 0);
+            BackButton.MaximumSize = new Size(0, 30);
+            BackButton.MinimumSize = new Size(75, 0);
             BackButton.Name = "BackButton";
-            BackButton.Size = new Size(63, 33);
+            BackButton.Size = new Size(75, 30);
             BackButton.TabIndex = 0;
             BackButton.Text = "<<Back";
             BackButton.UseVisualStyleBackColor = false;
