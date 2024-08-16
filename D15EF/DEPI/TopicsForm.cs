@@ -185,7 +185,8 @@ namespace DEPI
                 DialogResult yesNo = DialogResult.Yes;
                 if (selectedTopic.Top_Id > 0)
                 {
-                    yesNo = MessageBox.Show("YES: Insert New Topic\n NO: Update The Topic",
+                    yesNo = MessageBox.Show(
+                        $"YES: Insert New Topic\n NO: Update The Topic With ID = {selectedTopic.Top_Id}",
                         "Insert OR Update", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 }
 

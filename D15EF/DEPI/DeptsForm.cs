@@ -282,7 +282,7 @@ namespace DEPI
                 DialogResult yesNo = DialogResult.Yes;
                 if (selectedDepartment.Dept_Id > 0)
                 {
-                    yesNo = MessageBox.Show("YES: Insert New Department\n NO: Update The Department",
+                    yesNo = MessageBox.Show($"YES: Insert New Department\n NO: Update The Department With ID = {selectedDepartment.Dept_Id}",
                         "Insert OR Update", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 }
 

@@ -196,7 +196,8 @@ namespace DEPI
                 DialogResult yesNo = DialogResult.Yes;
                 if (selectedInstCrs.Crs_Id > 0 && selectedInstCrs.Ins_Id > 0)
                 {
-                    yesNo = MessageBox.Show("YES: Insert Record\n NO: Update Record",
+                    yesNo = MessageBox.Show(
+                        $"YES: Insert Record\n NO: Update Record With CourseID = {selectedInstCrs.Crs_Id} And With InstructorID = {selectedInstCrs.Ins_Id}",
                         "Insert OR Update", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 }
 

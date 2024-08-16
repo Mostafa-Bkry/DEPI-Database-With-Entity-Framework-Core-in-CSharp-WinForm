@@ -321,7 +321,7 @@ namespace DEPI
                 DialogResult yesNo = DialogResult.Yes;
                 if (selectedStudent.St_Id > 0)
                 {
-                    yesNo = MessageBox.Show("YES: Insert New Student\n NO: Update The Student",
+                    yesNo = MessageBox.Show($"YES: Insert New Student\n NO: Update The Student With ID = {selectedStudent.St_Id}",
                         "Insert OR Update", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 }
 
