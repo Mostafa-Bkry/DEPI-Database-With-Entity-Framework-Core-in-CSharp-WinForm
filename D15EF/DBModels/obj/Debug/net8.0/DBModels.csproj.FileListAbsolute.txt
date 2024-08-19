@@ -1,0 +1,15 @@
+D:\Courses\DEPI\Technical\2- C#\Day 15 Entity\Lab Answers\D15EF\DBModels\bin\Debug\net8.0\DBModels.deps.json
+D:\Courses\DEPI\Technical\2- C#\Day 15 Entity\Lab Answers\D15EF\DBModels\bin\Debug\net8.0\DBModels.runtimeconfig.json
+D:\Courses\DEPI\Technical\2- C#\Day 15 Entity\Lab Answers\D15EF\DBModels\bin\Debug\net8.0\DBModels.dll
+D:\Courses\DEPI\Technical\2- C#\Day 15 Entity\Lab Answers\D15EF\DBModels\bin\Debug\net8.0\DBModels.pdb
+D:\Courses\DEPI\Technical\2- C#\Day 15 Entity\Lab Answers\D15EF\DBModels\obj\Debug\net8.0\DBModels.csproj.AssemblyReference.cache
+D:\Courses\DEPI\Technical\2- C#\Day 15 Entity\Lab Answers\D15EF\DBModels\obj\Debug\net8.0\DBModels.GeneratedMSBuildEditorConfig.editorconfig
+D:\Courses\DEPI\Technical\2- C#\Day 15 Entity\Lab Answers\D15EF\DBModels\obj\Debug\net8.0\DBModels.AssemblyInfoInputs.cache
+D:\Courses\DEPI\Technical\2- C#\Day 15 Entity\Lab Answers\D15EF\DBModels\obj\Debug\net8.0\DBModels.AssemblyInfo.cs
+D:\Courses\DEPI\Technical\2- C#\Day 15 Entity\Lab Answers\D15EF\DBModels\obj\Debug\net8.0\DBModels.csproj.CoreCompileInputs.cache
+D:\Courses\DEPI\Technical\2- C#\Day 15 Entity\Lab Answers\D15EF\DBModels\obj\Debug\net8.0\DBModels.sourcelink.json
+D:\Courses\DEPI\Technical\2- C#\Day 15 Entity\Lab Answers\D15EF\DBModels\obj\Debug\net8.0\DBModels.dll
+D:\Courses\DEPI\Technical\2- C#\Day 15 Entity\Lab Answers\D15EF\DBModels\obj\Debug\net8.0\refint\DBModels.dll
+D:\Courses\DEPI\Technical\2- C#\Day 15 Entity\Lab Answers\D15EF\DBModels\obj\Debug\net8.0\DBModels.pdb
+D:\Courses\DEPI\Technical\2- C#\Day 15 Entity\Lab Answers\D15EF\DBModels\obj\Debug\net8.0\DBModels.genruntimeconfig.cache
+D:\Courses\DEPI\Technical\2- C#\Day 15 Entity\Lab Answers\D15EF\DBModels\obj\Debug\net8.0\ref\DBModels.dll

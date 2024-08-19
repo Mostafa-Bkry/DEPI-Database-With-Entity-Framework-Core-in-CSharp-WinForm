@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Courses\\DEPI\\Technical\\2- C#\\Day 15 Entity\\Lab Answers\\D15EF\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{193066EB-55A1-4068-BE77-FA46D7317F6F}|DEPI\\DEPI.csproj|d:\\courses\\depi\\technical\\2- c#\\day 15 entity\\lab answers\\d15ef\\depi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{193066EB-55A1-4068-BE77-FA46D7317F6F}|DEPI\\DEPI.csproj|solutionrelative:depi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Courses\\DEPI\\Technical\\2- C#\\Day 15 Entity\\Lab Answers\\D15EF\\DEPI\\Program.cs",
+              "RelativeDocumentMoniker": "DEPI\\Program.cs",
+              "ToolTip": "D:\\Courses\\DEPI\\Technical\\2- C#\\Day 15 Entity\\Lab Answers\\D15EF\\DEPI\\Program.cs",
+              "RelativeToolTip": "DEPI\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-11T14:21:52.716Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
